@@ -1,4 +1,16 @@
-#pragma once
+using namespace std;
+class inter {
+public:
+    string Level1();
+    string Level2();
+    string Level3();
+    void centerTextWithFrame(const std::string& text);
+    void waitForExit();
+    void setConsoleFontSize(int fontSize);
+    void setConsoleWindowSize(int width, int height);
+    void setColor(std::string text, std::string color);
+};
+
 class type1 {
 public:
     void Get_answer();
@@ -30,6 +42,7 @@ public:
     type4(double a1, double c1);
     void Get_answer();
     void show();
+    void Get_answer_podbor();
 };
 
 class type5 {
@@ -39,6 +52,7 @@ public:
     type5(double b1, double c1);
     void Get_answer();
     void show();
+    void Get_answer_podbor();
 };
 
 class type6 {
@@ -48,7 +62,9 @@ public:
     type6(double a1, double b1, double c1);
     void Get_answer();
     void show();
+    void Get_answer_podbor();
 };
+
 class type7 {
 private:
     double B;
@@ -65,4 +81,5 @@ public:
     type8(double a1, double b1);
     void Get_answer();
     void show();
+    void Get_answer_podbor();
 };
