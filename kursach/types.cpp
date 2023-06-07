@@ -33,7 +33,8 @@ type3::type3(double c1) {
     C = c1;
 }
 void type3::Get_answer() {
-    cout << "Корней нет" << endl;
+    if (C != 0) { cout << "Корней нет" << endl; }
+    else { cout << "Ответом является любое значение Х" << endl; }
 }
 void type3::show() {
     cout << C << " = 0" << endl;
@@ -287,7 +288,7 @@ string inter::Level1() {
         HANDLE WConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(WConsole, FOREGROUND_GREEN);
         string s1 = "Выберите действие:";
-        string s2 = "1. Выберать тип уравнения";
+        string s2 = "1. Выбрать тип уравнения";
         string s3 = "2. Выход из приложения";
         string s4 = "Выбор: ";
         centerTextWithFrame(s1);
@@ -357,7 +358,7 @@ string inter::Level1() {
 
             system("cls");
 
-            string s1 = "Ошибка выбора,меню перезагруженно";
+            string s1 = "Ошибка выбора, меню перезагруженно";
             centerTextWithFrame(s1);
             setColor(s1, "\033[1;31m");
             Level1();
@@ -377,14 +378,14 @@ string inter::Level2() {
 
         HANDLE WConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(WConsole, FOREGROUND_GREEN);
-        string s1 = "1. уравнение типа: 0=0 ";
-        string s2 = "2. уравнение типа: Ax^2 = 0 ";
-        string s3 = "3. уравнение типа: x^2 + C = 0 ";
-        string s4 = "4. уравнение типа: Ax^2 + x + С = 0";
-        string s5 = "5. уравнение типа: x^2 + B*x + C = 0";
-        string s6 = "6. уравнение типа: Ax^2 + B*x + C = 0";
-        string s7 = "7. уравнение типа: x^2 + Bx = 0";
-        string s8 = "8. уравнение типа: Ax^2 + Bx=0";
+        string s1 = "1. Уравнение типа: 0 = 0 ";
+        string s2 = "2. Уравнение типа: A*x^2 = 0 ";
+        string s3 = "3. Уравнение типа: C = 0 ";
+        string s4 = "4. Уравнение типа: A*x^2 + С = 0";
+        string s5 = "5. Уравнение типа: B*x + C = 0";
+        string s6 = "6. Уравнение типа: A*x^2 + B*x + C = 0";
+        string s7 = "7. Уравнение типа: B*x = 0";
+        string s8 = "8. Уравнение типа: A*x^2 + B*x = 0";
         centerTextWithFrame(s1);
         centerTextWithFrame(s2);
         centerTextWithFrame(s3);
@@ -395,7 +396,7 @@ string inter::Level2() {
         centerTextWithFrame(s8);
 
 
-        string s0 = "0.Назад";
+        string s0 = "0. Назад";
         centerTextWithFrame(s0);
 
         SetConsoleTextAttribute(WConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -435,8 +436,15 @@ string inter::Level2() {
 
         if (choice == 1) {
             system("cls");
+        Step1:
             cout << "Введите коэффецент: " << endl;
             cin >> A;
+            if (cin.fail()) {
+                cout << "Неправильные входные данные. Попробуйте еще раз." << endl;
+                cin.clear();
+                cin.ignore();
+                goto Step1;
+            }
             type1 eq1;
             eq1.show();
             eq1.Get_answer();
@@ -445,8 +453,15 @@ string inter::Level2() {
         }
         else if (choice == 2) {
             system("cls");
-            cout << "Введите коэффецент:A " << endl;
+        Step2:
+            cout << "Введите коэффецент: A " << endl;
             cin >> A;
+            if (cin.fail()) {
+                cout << "Неправильные входные данные. Попробуйте еще раз." << endl;
+                cin.clear();
+                cin.ignore();
+                goto Step2;
+            }
             type2 eq2(A);
             eq2.show();
             eq2.Get_answer();
@@ -454,8 +469,15 @@ string inter::Level2() {
         }
         else if (choice == 3) {
             system("cls");
+        Step3:
             cout << "Введите коэффецент: C" << endl;
             cin >> C;
+            if (cin.fail()) {
+                cout << "Неправильные входные данные. Попробуйте еще раз." << endl;
+                cin.clear();
+                cin.ignore();
+                goto Step3;
+            }
             type3 eq3(C);
             eq3.show();
             eq3.Get_answer();
@@ -464,9 +486,15 @@ string inter::Level2() {
         }
         else if (choice == 4) {
             system("cls");
-            cout << "Введите коэффецент: A and C " << endl;
-            cin >> A;
-            cin >> C;
+        Step4:
+            cout << "Введите коэффецент: A и C " << endl;
+            cin >> A >> C;
+            if (cin.fail()) {
+                cout << "Неправильные входные данные. Попробуйте еще раз." << endl;
+                cin.clear();
+                cin.ignore();
+                goto Step4;
+            }
             type4 eq4(A, C);
             eq4.show();
             eq4.Get_answer();
@@ -476,9 +504,15 @@ string inter::Level2() {
         }
         else if (choice == 5) {
             system("cls");
-            cout << "Введите коэффецент:B and C " << endl;
-            cin >> B;
-            cin >> C;
+        Step5:
+            cout << "Введите коэффецент: B и C " << endl;
+            cin >> B >> C;
+            if (cin.fail()) {
+                cout << "Неправильные входные данные. Попробуйте еще раз." << endl;
+                cin.clear();
+                cin.ignore();
+                goto Step5;
+            }
             type5 eq5(B, C);
             eq5.show();
             eq5.Get_answer();
@@ -488,10 +522,15 @@ string inter::Level2() {
         }
         else if (choice == 6) {
             system("cls");
-            cout << "Введите коэффецент:A,B and C " << endl;
-            cin >> A;
-            cin >> B;
-            cin >> C;
+        Step6:
+            cout << "Введите коэффецент: A, B и C " << endl;
+            cin >> A >> B >> C;
+            if (cin.fail()) {
+                cout << "Неправильные входные данные. Попробуйте еще раз." << endl;
+                cin.clear();
+                cin.ignore();
+                goto Step6;
+            }
             type6 eq6(A, B, C);
             eq6.show();
             eq6.Get_answer();
@@ -501,8 +540,15 @@ string inter::Level2() {
         }
         else if (choice == 7) {
             system("cls");
-            cout << "Введите коэффецент:B " << endl;
+        Step7:
+            cout << "Введите коэффецент: B " << endl;
             cin >> B;
+            if (cin.fail()) {
+                cout << "Неправильные входные данные. Попробуйте еще раз." << endl;
+                cin.clear();
+                cin.ignore();
+                goto Step7;
+            }
             type7 eq7(B);
             eq7.show();
             eq7.Get_answer();
@@ -511,9 +557,15 @@ string inter::Level2() {
         }
         else if (choice == 8) {
             system("cls");
-            cout << "Введите коэффецент:A and B " << endl;
-            cin >> A;
-            cin >> B;
+        Step8:
+            cout << "Введите коэффецент: A и B " << endl;
+            cin >> A >> B;
+            if (cin.fail()) {
+                cout << "Неправильные входные данные. Попробуйте еще раз." << endl;
+                cin.clear();
+                cin.ignore();
+                goto Step8;
+            }
             type8 eq8(A, B);
             eq8.show();
             eq8.Get_answer();
@@ -532,7 +584,7 @@ string inter::Level2() {
             system("cls");
 
 
-            string s8 = "Ошибка выбора,меню перезагруженно";
+            string s8 = "Ошибка выбора, меню перезагруженно";
             centerTextWithFrame(s8);
 
             Level2();
@@ -576,7 +628,7 @@ string inter::Level3() {
         }
         catch (const std::invalid_argument& e) {
             system("cls");
-            string er1 = "Ошибка:Введенна строка";
+            string er1 = "Ошибка: Введенна строка";
             centerTextWithFrame(er1);
 
             Level3();  // Выход из программы или выполнение других действий в случае ошибки
