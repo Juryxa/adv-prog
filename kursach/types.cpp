@@ -206,37 +206,38 @@ void inter::setConsoleWindowSize(int width, int height) {
 void inter::centerTextWithFrame(const string& text)
 {
     int screenWidth = GetSystemMetrics(SM_CXSCREEN); // Получаем ширину экрана
-    int frameWidth = 60; // Ширина рамки
+    int frameWidth = 120; // Ширина рамки
 
     int paddingWidth = (frameWidth - text.length()) / 2;
 
     // Вывод рамки
 
     HANDLE aConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(aConsole, FOREGROUND_BLUE);
+    
+    
     for (int i = 0; i < frameWidth; ++i)
     {
-        cout << "=";
+        cout << "-";
     }
 
-    SetConsoleTextAttribute(aConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+    
 
     cout << endl;
 
     // Вывод текста с выравниванием по центру и отступом слева
     HANDLE textConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(textConsole, FOREGROUND_GREEN);
+    
     cout << setw(paddingWidth) << "" << text << endl;
 
     HANDLE YConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(YConsole, FOREGROUND_BLUE);
+
     // Вывод рамки
     for (int i = 0; i < frameWidth; ++i)
     {
-        cout << "=";
+        cout << "-";
     }
 
-    SetConsoleTextAttribute(YConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+   
 
     cout << endl;
 }
@@ -246,7 +247,6 @@ void inter::centerTextWithFrame(const string& text)
 
 void inter::waitForExit()
 {
-    //std::cout << "Нажмите любую клавишу, чтобы закрыть это окно...";
     std::cin.ignore();
 }
 
@@ -286,7 +286,7 @@ string inter::Level1() {
 
     while (true) {
         HANDLE WConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(WConsole, FOREGROUND_GREEN);
+
         string s1 = "Выберите действие:";
         string s2 = "1. Выбрать тип уравнения";
         string s3 = "2. Выход из приложения";
@@ -294,7 +294,6 @@ string inter::Level1() {
         centerTextWithFrame(s1);
         centerTextWithFrame(s2);
         centerTextWithFrame(s3);
-        SetConsoleTextAttribute(WConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         cout << endl;
         cout << s4 << endl;
 
@@ -339,17 +338,17 @@ string inter::Level1() {
             cout << "" << endl;
             system("cls");
 
-            setConsoleFontSize(15);
+            setConsoleFontSize(17);
             HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-            SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-            std::cout << "                                                               " << std::endl;
-            std::cout << "                                                               " << std::endl;
-            std::cout << "                                                               " << std::endl;
-            std::cout << "                                                               " << std::endl;
-            std::cout << "                                                               " << std::endl;
-            std::cout << "                                          Вы можете закрыть это окно" << std::endl;
 
-            SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+            std::cout << "A problem has been detected and windows has been shut down to prevent damage to your computer If this the first time you ve seen this stop error screen, restart your computer. If this screen appears again, follow these steps Check to be sure you have adequate disk space. If a driver is identified in the stop message, disable the driver or check with the manufacturer for driver updates. Try changing video adapters Check with your hardware vendor for any bios updates. Disable bios memory options such as caching or shadowing If you need tu use Safe mode to remove or dicable components, restart your computer, press f8 to select Advanced Startup Options, and then select Safe mode  Stop 0x0000001e (0xffffffffc0000005,0xfffff80001098A60  Beginning dump of physical memory physical memory dump complete Contact your system administrator or technical support group for further assistance Перевод: английский > русский Проблема была обнаружена и окна были закрыты, чтобы предотвратить повреждение компьютера Если это первый раз, когда вы видели эту остановку экране ошибку, перезагрузите компьютер. Если этот экран появляется снова, выполните следующие действия Проверьте, чтобы у вас есть достаточное пространство диска. Если драйвер указан в стоп-ошибки, отключите драйвер или свяжитесь с производителем для обновления драйверов. Попробуйте изменить видеоадаптеры Обратитесь к поставщику оборудования для любых обновлений BIOS. Отключить BIOS памяти варианты, такие как кэширование или затенение Если вам необходимо использовать ту безопасном режиме, чтобы удалить или dicable компоненты, перезагрузите компьютер, нажмите F8 чтобы выбрать Расширенный Параметры запуска, а затем выберите Безопасный режим  STOP 0x0000001E (0xffffffffc0000005, 0xfffff80001098A60  Начало дамп физической памяти физические полный дамп памяти Обратитесь к вашему системному администратору или в группу технической поддержки для получения дополнительной помощи                                                               " << std::endl;
+            std::cout << "                                                               " << std::endl;
+            std::cout << "                                                               " << std::endl;
+            std::cout << "                                                               " << std::endl;
+            std::cout << "                                                               " << std::endl;
+            std::cout << "        ШУТКА!                                                       " << std::endl;
+
+           
             waitForExit();
             break;
         }
@@ -360,7 +359,7 @@ string inter::Level1() {
 
             string s1 = "Ошибка выбора, меню перезагруженно";
             centerTextWithFrame(s1);
-            setColor(s1, "\033[1;31m");
+
             Level1();
             //throw std::runtime_error("Неверный выбор"); // Бросаем исключение
         }
@@ -377,7 +376,6 @@ string inter::Level2() {
 
 
         HANDLE WConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(WConsole, FOREGROUND_GREEN);
         string s1 = "1. Уравнение типа: 0 = 0 ";
         string s2 = "2. Уравнение типа: A*x^2 = 0 ";
         string s3 = "3. Уравнение типа: C = 0 ";
@@ -399,7 +397,7 @@ string inter::Level2() {
         string s0 = "0. Назад";
         centerTextWithFrame(s0);
 
-        SetConsoleTextAttribute(WConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+       
         std::cout << "Выбор: ";
 
 
@@ -418,7 +416,7 @@ string inter::Level2() {
         }
         catch (const std::invalid_argument& e) {
             system("cls");
-            string er1 = "Ошибка:Введенна строка";
+            string er1 = "Ошибка: Введенна строка";
             centerTextWithFrame(er1);
 
             Level3();  // Выход из программы или выполнение других действий в случае ошибки
@@ -601,7 +599,6 @@ string inter::Level3() {
     string output;
     while (true) {
         HANDLE WConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(WConsole, FOREGROUND_GREEN);
         string s1 = "Выберите действие:";
         string s2 = "1. Продолжить";
         string s3 = "2. Главное меню";
@@ -611,7 +608,6 @@ string inter::Level3() {
         centerTextWithFrame(s2);
         centerTextWithFrame(s3);
         centerTextWithFrame(s4);
-        SetConsoleTextAttribute(WConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         cout << endl;
         cout << s5 << endl;
 
@@ -661,15 +657,14 @@ string inter::Level3() {
             waitForExit();
             cout << "" << endl;
             system("cls");
-            setConsoleFontSize(15);
+            setConsoleFontSize(17);
             HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-            SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+            std::cout << "A problem has been detected and windows has been shut down to prevent damage to your computer If this the first time you ve seen this stop error screen, restart your computer. If this screen appears again, follow these steps Check to be sure you have adequate disk space. If a driver is identified in the stop message, disable the driver or check with the manufacturer for driver updates. Try changing video adapters Check with your hardware vendor for any bios updates. Disable bios memory options such as caching or shadowing If you need tu use Safe mode to remove or dicable components, restart your computer, press f8 to select Advanced Startup Options, and then select Safe mode  Stop 0x0000001e (0xffffffffc0000005,0xfffff80001098A60  Beginning dump of physical memory physical memory dump complete Contact your system administrator or technical support group for further assistance Перевод: английский > русский Проблема была обнаружена и окна были закрыты, чтобы предотвратить повреждение компьютера Если это первый раз, когда вы видели эту остановку экране ошибку, перезагрузите компьютер. Если этот экран появляется снова, выполните следующие действия Проверьте, чтобы у вас есть достаточное пространство диска. Если драйвер указан в стоп-ошибки, отключите драйвер или свяжитесь с производителем для обновления драйверов. Попробуйте изменить видеоадаптеры Обратитесь к поставщику оборудования для любых обновлений BIOS. Отключить BIOS памяти варианты, такие как кэширование или затенение Если вам необходимо использовать ту безопасном режиме, чтобы удалить или dicable компоненты, перезагрузите компьютер, нажмите F8 чтобы выбрать Расширенный Параметры запуска, а затем выберите Безопасный режим  STOP 0x0000001E (0xffffffffc0000005, 0xfffff80001098A60  Начало дамп физической памяти физические полный дамп памяти Обратитесь к вашему системному администратору или в группу технической поддержки для получения дополнительной помощи    "                         << std::endl;
             std::cout << "                                                               " << std::endl;
             std::cout << "                                                               " << std::endl;
             std::cout << "                                                               " << std::endl;
+            std::cout << "        ШУТКА!                                                       " << std::endl;
             std::cout << "                                                               " << std::endl;
-            std::cout << "                                                               " << std::endl;
-            std::cout << "                                           Вы можете закрыть это окно" << std::endl;
 
             SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
             waitForExit();

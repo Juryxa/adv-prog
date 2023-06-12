@@ -16,6 +16,7 @@ int main()
 
     setlocale(LC_ALL, "Russian");
     double A, B, C;
+    system("color 17");
 
     inter myobj;
     myobj.Level1();
